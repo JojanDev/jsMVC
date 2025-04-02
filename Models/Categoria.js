@@ -12,7 +12,8 @@ class Categoria {
    */
   async getAll() {
     try {
-      const [rows] = await connection.query("select * from categorias;");
+      const [rows] = await connection.query("select * from categorias");
+      console.log("Categorías en BD:", rows);
       return rows;
     } catch (error) {
       throw new Error("Error al obtener las categorias");
@@ -21,16 +22,18 @@ class Categoria {
 
   async create() {
     try {
-      const {result} = await connection.query(`insert into categorias(nombre, descripcion) value
-        (?,?)`, [this.nombre, this.descripcion]);
+      const { result } = await connection.query(
+        `insert into categorias(nombre, descripcion) value
+        (?,?)`,
+        [this.nombre, this.descripcion]
+      );
       return {
         id: result.id,
         nombre: this.nombre,
-        descripcion: this.descripcion
+        descripcion: this.descripcion,
       };
     } catch (error) {
       throw new Error("Error al crear la categoria");
-      
     }
   }
 }
