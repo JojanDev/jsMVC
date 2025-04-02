@@ -2,7 +2,6 @@ import express from "express";
 import bodyParser from "body-parser";
 import routeCategorias from "./routes/routeCategorias.js";
 import routeProductos from "./routes/routeProductos.js";
-
 const app = express();
 
 app.use(bodyParser.json());

@@ -13,21 +13,11 @@ class Productos {
    * @returns {Array} Listado de las categorias en un arreglo
    */
   async getAll() {
-    // try {
-    //   const [rows] = await connection.query("select * from productos");
-    //   console.log("Productos en BD:" + rows);
-    //   return rows;
-    // } catch (error) {
-    //   throw new Error("Error al obtener las categorias");
-    // }
-
     try {
-      console.log("📌 Ejecutando consulta: SELECT * FROM productos");
-      const [rows] = await connection.query("SELECT * FROM productos;");
-      console.log("📌 Productos obtenidos:", rows);
+      const [rows] = await connection.query("select * from productos");
       return rows;
     } catch (error) {
-      console.error("❌ Error al obtener los productos:", error);
+      throw new Error("Error al obtener las categorias");
     }
   }
 
